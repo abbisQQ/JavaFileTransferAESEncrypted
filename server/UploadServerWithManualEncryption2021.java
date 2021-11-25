@@ -19,14 +19,12 @@ public class UploadServerWithManualEncryption2021 {
             // Communication Endpoint for the client and server.
 
             IvParameterSpec iv = AESManual.generateIv();
-            SecretKey key = AESManual.getKeyFromPassword("ssj2P@ssw0rd","kaioken");
+            SecretKey key = AESManual.getKeyFromPassword("P@ssw0rd","salt");
             byte[] data;
             byte[] encryptedData;
 
-            int i =0;
-
             System.out.println("Server started");
-            while(i<1000000000) {
+            while(true) {
                 // Waiting for socket connection
                 Socket s = ss.accept();
 
@@ -37,9 +35,8 @@ public class UploadServerWithManualEncryption2021 {
 
                 Date date = new Date();
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-               //FileOutputStream fos = new FileOutputStream("C:\\temp\\" + dateFormat.format(date) + i + ".jpg"); //change path of image according to you
-                //for linux
-                FileOutputStream fos = new FileOutputStream("/media/pi/I/images/" + dateFormat.format(date) + i + ".jpg");
+
+                FileOutputStream fos = new FileOutputStream("path" + dateFormat.format(date) + "any extention the file may have e.x .pdf");
                 fos.write(encryptedData);
 
 
